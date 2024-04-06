@@ -23,7 +23,7 @@
   </div>
   <br>
   <blockquote>
-    Open Source Version of Youtube without Ads
+    Open Source Version of Youtube without Ads and Low Data Optimized.
   </blockquote>
   <br>
   <h2>Built with</h2>
