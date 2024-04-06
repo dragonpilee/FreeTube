@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "variables";
+
+// Base Rules
+@import "root";
+
+// Bar
+@import "bar/navbar";
+@import "bar/sidebar";
+
+// pages
+@import "pages/feed";
+@import "pages/explore";
+@import "pages/explore-itmes";
+@import "pages/search";
+
+@import "Details/channel";
+@import "Details/video";
+
+// components
+@import "components/components";

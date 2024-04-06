@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: $bgcolor;
+}
+
+.main {
+  display: flex;
+  overflow-y: auto;
+}
+
+.content {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  flex-grow: 2;
+}
+
+.admin {
+  width: 100%;
+  @include center;
+  font-family: monospace;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 100;
+  color: rgba(194, 194, 194, 0.801);
+  margin-top: 30px;
+}
+
+.admin:hover {
+  color: rgba(241, 241, 241, 0.856);
+}
+
+@media all and (hover: none) {
+  .admin {
+    cursor: default;
+  }
+}

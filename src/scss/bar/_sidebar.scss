@@ -1,0 +1,117 @@
+.sb-big {
+  width: 230px;
+  @include centerAlign;
+  flex-direction: column;
+  padding: 30px 10px 10px 10px;
+}
+
+.sb-big::-webkit-scrollbar {
+  display: none;
+}
+
+.home {
+  border-bottom: 1px solid $border;
+  padding-bottom: 15px;
+}
+
+.explore {
+  @extend .home;
+  padding-top: 20px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  display: inline-block;
+  color: $textcolor;
+  width: 210px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  @include centerAlign;
+  font-weight: 200;
+  font-size: 14px;
+
+  i {
+    margin-right: 20px;
+  }
+  img {
+    margin-right: 20px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.sidebar-link:hover {
+  background: $hover;
+}
+
+.sidebar-link.active {
+  background-color: #2928289f;
+}
+
+.explore h4 {
+  padding: 10px 20px;
+  color: $textcolor;
+  font-weight: 200;
+}
+
+// small-side bar
+.sb-small {
+  width: 80px;
+  height: 100%;
+  padding: 10px 20px 10px 10px;
+}
+
+.sidebar-link-sm {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  @include center;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 15px;
+  text-decoration: none;
+  font-size: 10px;
+  color: $textcolor;
+
+  i {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+}
+
+.sidebar-link-sm:hover {
+  background: $hover;
+}
+
+.sidebar-link-sm.active {
+  background-color: #2928289f;
+}
+
+// responsive
+
+@media all and (max-width: 1000px) {
+  .sb-big {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 100px;
+    background-color: $bgcolor;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .sidebar-link-sm,
+  .sidebar-link {
+    cursor: default;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .sb-small {
+    display: none;
+  }
+}

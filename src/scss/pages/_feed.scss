@@ -1,0 +1,141 @@
+// wrapper
+
+.video-card-wrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// video card
+
+.card-box {
+  text-decoration: none;
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 350px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+
+  img {
+    border-radius: 14px;
+  }
+
+  .card-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100px;
+    display: flex;
+    line-height: 20px;
+
+    img {
+      border-radius: 50%;
+      height: 36px;
+      width: 36px;
+      margin-right: 10px;
+    }
+
+    .des {
+      p {
+        max-height: 44px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: $textcolor;
+        font-weight: 700;
+      }
+      .channel-name {
+        text-decoration: none;
+        font-size: 14px;
+        color: #a0a0a0;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-top: 6px;
+        white-space: pre;
+      }
+
+      .date {
+        font-size: 12px;
+        color: #a0a0a0;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .channel-name:hover {
+    color: white !important;
+    position: relative;
+  }
+
+  .channel-name:hover::after {
+    content: attr(text);
+    position: absolute;
+    top: -45px;
+    left: 0;
+    border-radius: 5px;
+    padding: 8px 10px;
+    background: $hover;
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+  .channel-name:hover {
+    color: white !important;
+    position: relative;
+  }
+
+  .channel-name:hover::after {
+    content: attr(text);
+    position: absolute;
+    top: -45px;
+    left: 0;
+    border-radius: 5px;
+    padding: 8px 10px;
+    background: $hover;
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+}
+
+.card-box:hover {
+  position: relative;
+}
+
+.card-box:hover::after {
+  content: attr(text);
+  position: absolute;
+  top: 170px;
+  right: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: black;
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+// responsive for wrapper & box
+
+@media all and (max-width: 700px) {
+  .video-card-wrapper {
+    cursor: default;
+  }
+  .card-box {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+///
+@media (hover: none) {
+  .card-box {
+    cursor: default;
+  }
+}
