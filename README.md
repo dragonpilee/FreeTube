@@ -5,7 +5,7 @@
    FreeTube 
 </h1>
 <p align="center">
-  <a href="https://ytbe.netlify.app/" target="_blank">  FreeTube </a> built with <a href="https://reactjs.org/" target="_blank"> React </a> and hosted with <a href="https://aws.amazon.com/" target="_blank">AWS</a>
+  <a href="https://main.d1zasqtam0zsb0.amplifyapp.com/" target="_blank">  FreeTube </a> built with <a href="https://reactjs.org/" target="_blank"> React </a> and hosted with <a href="https://aws.amazon.com/" target="_blank">AWS</a>
 </p>
 <br />
 
