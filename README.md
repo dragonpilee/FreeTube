@@ -2,18 +2,18 @@
   <img alt="Logo" src="./public/favicon.png" width="100" />
 </div>
 <h1 align="center">
-   YouTube Clone 
+   FreeTube 
 </h1>
 <p align="center">
-  <a href="https://ytbe.netlify.app/" target="_blank">  FreeTube </a> built with <a href="https://reactjs.org/" target="_blank"> React </a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+  <a href="https://ytbe.netlify.app/" target="_blank">  FreeTube </a> built with <a href="https://reactjs.org/" target="_blank"> React </a> and hosted with <a href="https://aws.amazon.com/" target="_blank">AWS</a>
 </p>
 <br />
 
-### Click to <a href="https://ytbe.netlify.app/" target="_blank"> Visit </a>
+### Click to <a href="https://main.d1zasqtam0zsb0.amplifyapp.com/" target="_blank"> Visit </a>
 
 <br />
 <br />
- <a href="https://ytbe.netlify.app/" target="_blank">
+ <a href="https://main.d1zasqtam0zsb0.amplifyapp.com/" target="_blank">
     <img src="./public/overview.png" width='100%' alt="Overview" />
   </a>
   
@@ -78,5 +78,5 @@ Roboto
  
  <div align="center">
   <img alt="Logo" src="https://user-images.githubusercontent.com/108873224/204333286-933d52ca-91f2-4d94-8266-944bdbe9628d.png" width="100" />
-  <h6> Developed by <a href="https://github.com/sumyat-aung/">Sandra Anna Joshy</a></h1>
+  <h6> Developed by <a href="https://github.com/dragonpilee/FreeTube">Sandra Anna Joshy</a></h1>
 </div>
