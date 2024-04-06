@@ -77,7 +77,7 @@
     <h6>Developed by <a href="https://github.com/dragonpilee/FreeTube">Sandra Anna Joshy</a></h6>
   </div>
   <footer>
-    Contributions by Alan Cyril Sunny
+    Contributions - Alan Cyril Sunny
   </footer>
 </body>
 
