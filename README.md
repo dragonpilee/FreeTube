@@ -70,9 +70,8 @@
 
 <div align="center">
   <img alt="Logo" src="https://user-images.githubusercontent.com/108873224/204333286-933d52ca-91f2-4d94-8266-944bdbe9628d.png" width="100">
-  <h6>Developed by <a href="https://github.com/dragonpilee/FreeTube">Sandra Anna Joshy</a></h6>
+  <h6>Developed by <a href="https://github.com/dragonpilee/FreeTube">Alan Cyril Sunny</a></h6>
 </div>
 
-**Contributions:** Alan Cyril Sunny
 
 ---
