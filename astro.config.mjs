@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
         host: true,
         port: 3000
     },
-    adapter: undefined, // We will rely on Node/Vite for dev/docker
+    adapter: netlify(), // Configured for Netlify Deployment
     devToolbar: {
         enabled: false
     }

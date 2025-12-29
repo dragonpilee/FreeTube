@@ -11,6 +11,7 @@
     "dependencies": {
         "@astrojs/react": "^3.0.0",
         "@astrojs/tailwind": "^5.0.0",
+        "@astrojs/netlify": "^4.0.0",
         "astro": "^4.0.0",
         "lucide-react": "^0.294.0",
         "nanostores": "^0.9.0",
