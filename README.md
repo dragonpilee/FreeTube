@@ -1,4 +1,4 @@
-# MusicTube 🎵
+# FreeTubeMusic 🎵
 
 > A premium, ad-free YouTube Music clone built for performance and privacy.
 

@@ -8,7 +8,7 @@ const Sidebar = () => {
                 <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
                     <Music2 size={20} color="white" />
                 </div>
-                <span class="text-xl font-bold tracking-tight text-white">MusicTube</span>
+                <span class="text-xl font-bold tracking-tight text-white">FreeTubeMusic</span>
             </div>
 
             <nav class="flex flex-col gap-2 w-full px-2">
