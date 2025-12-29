@@ -1,4 +1,4 @@
-const CACHE_NAME = 'freetubemusic-v1';
+const CACHE_NAME = 'freetubemusic-v2';
 const urlsToCache = [
     '/',
     '/index.html',
