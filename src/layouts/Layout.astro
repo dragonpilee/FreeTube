@@ -1,0 +1,81 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import Sidebar from '../components/Sidebar';
+import Player from '../components/Player';
+import BottomNav from '../components/BottomNav';
+import { Search } from 'lucide-react';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="MusicTube - Open Source Music Player" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-youtube-base text-youtube-text overflow-hidden h-screen flex flex-col md:flex-row">
+        <Sidebar client:load />
+
+        <div class="flex-1 flex flex-col h-full relative">
+            <!-- Header / Search -->
+            <header class="h-16 flex items-center px-4 md:px-6 sticky top-0 z-40 bg-[#000000] shrink-0 gap-4">
+                 <div class="flex-1 max-w-2xl relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Search className="text-zinc-400" size={20} />
+                    </div>
+                    <input
+                        id="search-input"
+                        type="text"
+                        placeholder="Search songs, albums, artists..."
+                        class="w-full bg-[#212121] text-white border border-transparent rounded-lg py-2.5 pl-12 pr-4 focus:outline-none focus:bg-white/10 placeholder-zinc-500 font-medium text-sm transition-colors"
+                    />
+                    <script>
+                        const input = document.getElementById('search-input');
+                        input.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter') {
+                                window.location.href = `/search/${input.value}`;
+                            }
+                        });
+                    </script>
+                 </div>
+                 <div class="ml-auto flex items-center gap-4">
+                    <div class="w-8 h-8 rounded-full bg-pink-700 flex items-center justify-center font-bold text-sm text-white cursor-pointer">
+                        A
+                    </div>
+                 </div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto p-4 md:p-6 pb-36 md:pb-24 scrollbar-hide">
+                <slot />
+                
+                <footer class="text-center text-zinc-600 text-xs py-8 mt-4">
+                    Developed with <span class="text-red-600">❤</span> by <a href="https://github.com/dragonpilee" target="_blank" class="hover:text-zinc-400 transition-colors">CineGeek</a>
+                </footer>
+            </main>
+
+            <Player client:load />
+            <BottomNav client:load />
+        </div>
+	</body>
+</html>
+
+<style is:global>
+    @import 'tailwindcss/base';
+    @import 'tailwindcss/components';
+    @import 'tailwindcss/utilities';
+
+    astro-dev-toolbar {
+        display: none !important;
+    }
+</style>

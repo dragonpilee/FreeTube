@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "../assests/navbar/logo.png";
+import logo from "../assets/navbar/logo.png";
 import NotiBox from "../components/NotiBox";
 
 // import necessary components ^^^^^

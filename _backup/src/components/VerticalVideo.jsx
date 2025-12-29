@@ -14,9 +14,10 @@ const VerticalVideo = ({ d }) => {
   const navigate = useNavigate();
 
   // Replace '=>' with ':' in the URL strings
+  // Replace '=>' with ':' in the URL strings
   const correctedMediumUrl = d?.snippet?.thumbnails?.medium?.url
-    .replace(/=>/g, ":")
-    .replace(/\s/g, "");
+    ? d.snippet.thumbnails.medium.url.replace(/=>/g, ":").replace(/\s/g, "")
+    : "https://via.placeholder.com/320x180.png?text=No+Preview";
 
   return (
     <Link

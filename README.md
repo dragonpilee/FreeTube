@@ -1,77 +1,66 @@
-# FreeTube
+# MusicTube 🎵
 
-![React](https://img.shields.io/badge/Framework-React-blue)
-![Redux Toolkit](https://img.shields.io/badge/State-Redux%20Toolkit-purple)
-![SCSS](https://img.shields.io/badge/Style-SCSS-cc6699)
-![Vite](https://img.shields.io/badge/Build-Vite-yellow)
-![AWS](https://img.shields.io/badge/Hosting-AWS-orange)
-![RapidAPI](https://img.shields.io/badge/API-RapidAPI-lightblue)
+> A premium, ad-free YouTube Music clone built for performance and privacy.
 
-<div align="center">
-  <img alt="Logo" src="./public/favicon.png" width="100">
-</div>
+![MusicTube Banner](public/favicon.svg)
 
-<h1 align="center">FreeTube</h1>
+**MusicTube** is a blazing fast, server-side rendered music application built with **Astro**, **React**, and **Tailwind CSS**. It replicates the YouTube Music experience with a "Pure Black" aesthetic, functional playback, and reliable search without requiring personal API keys.
 
-<p align="center">
-  <a href="https://main.d1zasqtam0zsb0.amplifyapp.com/" target="_blank">FreeTube</a> built with <a href="https://reactjs.org/" target="_blank">React</a> and hosted with <a href="https://aws.amazon.com/" target="_blank">AWS</a>
-</p>
+## 🚀 Key Features
 
-<div align="center">
-  <a href="https://main.d1zasqtam0zsb0.amplifyapp.com/" target="_blank">
-    <img src="./public/overview.png" width="100%" alt="Overview">
-  </a>
-</div>
+*   **Premium Aesthetic**: Pixel-perfect "Pure Black" theme (#000000) matching the official app.
+*   **Ad-Free Streaming**: Listen to music without interruptions.
+*   **Robust Search**: Multi-instance fallback system (Invidious) ensures search always works.
+*   **Region-Specific Trends**: Automatically loads top hits for India (configurable).
+*   **Mobile PWA**: Installable as a native app with a bottom navigation bar and responsive player.
+*   **Dockerized**: Fully containerized development environment.
 
-> Open Source Version of Youtube without Ads and Low Data Optimization.
+## 🛠️ Tech Stack
 
----
+*   **Framework**: [Astro](https://astro.build) (Server-First Performance)
+*   **UI Library**: React 18
+*   **Styling**: Tailwind CSS
+*   **State Management**: Nano Stores (Global Player State)
+*   **Data Fetching**: Invidious API (No Auth Required)
+*   **Deployment**: Docker / Netlify
 
-## 🛠️ Built With
+## 🏁 Getting Started
 
-- **React**
-- **Redux Toolkit**
-- **Scss** (CSS pre-processor)
+### Prerequisite
+- Docker Desktop installed.
 
-## 📦 Used
+### Run with Docker (Recommended)
 
-- **Vite**
-- **React-Router-Dom**
-- **Rapid API**
+```bash
+# Start the application
+docker-compose up -d --build
 
----
+# Open in browser
+http://localhost:3000
+```
 
-## 🎨 Color Reference
+### Manual Setup (Requires Node 18+)
 
-| Color        | Hex      |
-| ------------ | -------- |
-| Bg-Black     | #0f0f0f  |
-| Text-white   | #d3d3d3  |
-| Hover-gray   | #3f3f3f  |
-| Border       | #303030  |
+```bash
+npm install
+npm run dev
+```
 
----
+## 📱 PWA Installation
 
-## 🖋️ Fonts
+1.  Open **MusicTube** on your mobile browser.
+2.  Tap **Share** (iOS) or **Menu** (Android).
+3.  Select **"Add to Home Screen"**.
+4.  Enjoy the native app experience!
 
-- Roboto
+## 🚢 Deployment
 
----
+This project is configured for **Netlify**.
 
-## 📱 About
+1.  Fork/Clone this repository.
+2.  Import to Netlify.
+3.  The `netlify.toml` file will automatically set the build command (`npm run build`) and publish directory (`dist`).
 
-> - Responsive to all screen sizes  
-> - Fast and reliable access to videos with Rapid API  
-> - Includes almost all features that the original YouTube has  
-> - Advanced data handling and customization with Redux Toolkit  
-> - Uses Scss for design & file management
+## ❤️ Credits
 
----
-
-<div align="center">
-  <img alt="Logo" src="https://user-images.githubusercontent.com/108873224/204333286-933d52ca-91f2-4d94-8266-944bdbe9628d.png" width="100">
-  <h6>Developed by <a href="https://github.com/dragonpilee/FreeTube">Alan Cyril Sunny</a></h6>
-</div>
-
-
----
+Developed with love by **CineGeek**.

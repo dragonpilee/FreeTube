@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Explore - MusicTube">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Explore Genres</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            {['Pop', 'Rock', 'Hip Hop', 'Jazz', 'Electronic', 'Classical', 'Indie', 'Folk'].map(genre => (
+                <div class="h-24 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition flex items-center justify-center text-xl font-bold border-l-4 border-youtube-accent cursor-pointer">
+                    {genre}
+                </div>
+            ))}
+        </div>
+
+        <h2 class="text-2xl font-bold mb-6">New Releases</h2>
+        <div id="new-releases-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+             <!-- Loaded dynamically via script below -->
+             <p class="text-gray-400 col-span-full">Loading fresh hits...</p>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    async function loadTrending() {
+        const instances = [
+            'https://vid.puffyan.us',
+            'https://inv.tux.pizza',
+            'https://yewtu.be',
+            'https://invidious.drgns.space'
+        ];
+        
+        const grid = document.getElementById('new-releases-grid');
+        let data = null;
+
+        for (const instance of instances) {
+            try {
+                console.log(`Trying Explore on ${instance}...`);
+                const res = await fetch(`${instance}/api/v1/trending?region=IN&type=Music`);
+                if (res.ok) {
+                    data = await res.json();
+                    break;
+                }
+            } catch(e) {
+                console.warn(`Explore failed on ${instance}`, e);
+            }
+        }
+
+        if(data && data.length > 0) {
+            grid.innerHTML = '';
+            data.slice(0, 10).forEach(item => {
+                    const songData = {
+                    id: item.videoId,
+                    title: item.title,
+                    artist: item.author,
+                    image: item.videoThumbnails?.[1]?.url || item.videoThumbnails?.[0]?.url 
+                    };
+                    
+                    const card = document.createElement('div');
+                    card.className = 'group cursor-pointer';
+                    card.innerHTML = `
+                    <div class="aspect-square bg-zinc-800 rounded-md mb-3 overflow-hidden relative">
+                            <img src="${songData.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onError="this.src='https://via.placeholder.com/300?text=No+Image'"/>
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center pl-1 text-black shadow-xl hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                </div>
+                            </div>
+                    </div>
+                    <h3 class="font-bold text-base truncate text-white">${songData.title}</h3>
+                    <p class="text-gray-400 text-sm truncate">${songData.artist}</p>
+                `;
+                card.onclick = () => window.dispatchEvent(new CustomEvent('play-song', { detail: songData }));
+                grid.appendChild(card);
+            });
+        } else {
+             grid.innerHTML = '<p class="text-red-500 col-span-full">Could not load trending music.</p>';
+        }
+    }
+    loadTrending();
+</script>

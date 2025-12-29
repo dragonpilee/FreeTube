@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import studio from "../assests/sidebar/studio.svg";
-import music from "../assests/sidebar/music.svg";
-import kids from "../assests/sidebar/kids.svg";
-import TV from "../assests/sidebar/TV.svg";
-import Admin from "../administrator/Admin";
-
 // import necessary components ^^^^^
 
 const SideBar = ({ sideBar, setsideBar }) => {
@@ -35,7 +29,7 @@ const SideBar = ({ sideBar, setsideBar }) => {
   }
 
   function enableScroll() {
-    window.onscroll = function () {};
+    window.onscroll = function () { };
   }
 
   if (sideBar && window.innerWidth < 1000) {
@@ -77,43 +71,27 @@ const SideBar = ({ sideBar, setsideBar }) => {
           </div>
 
           <div className="explore">
-            <h4>Explore</h4>
+            <h4>Library</h4>
             <NavLink
-              to={"/gaming"}
+              to={"/explore"}
               className={`sidebar-link ${({ isActive }) =>
                 isActive ? "active" : ""}`}
               onClick={close}
             >
-              <i className="fa-solid fa-gamepad"></i> Gaming
+              <i className="fa-solid fa-music"></i> New Releases
             </NavLink>
             <NavLink
-              to={"/beauty"}
+              to={"/top-charts"}
               className={`sidebar-link ${({ isActive }) =>
                 isActive ? "active" : ""}`}
               onClick={close}
             >
-              <i className="fa-solid fa-vest"></i> Fashion & Beauty
-            </NavLink>
-            <NavLink
-              to={"/learning"}
-              className={`sidebar-link ${({ isActive }) =>
-                isActive ? "active" : ""}`}
-              onClick={close}
-            >
-              <i className="fa-solid fa-graduation-cap"></i> Learning
-            </NavLink>
-            <NavLink
-              to={"/sports"}
-              className={`sidebar-link ${({ isActive }) =>
-                isActive ? "active" : ""}`}
-              onClick={close}
-            >
-              <i className="fa-solid fa-medal"></i> Sports
+              <i className="fa-solid fa-arrow-trend-up"></i> Top Charts
             </NavLink>
           </div>
 
           <div className="explore">
-            
+
           </div>
           <Admin />
         </div>
@@ -135,35 +113,14 @@ const SideBar = ({ sideBar, setsideBar }) => {
             className={`sidebar-link-sm ${({ isActive }) =>
               isActive ? "active" : ""}`}
           >
-            <i className="fa-solid fa-globe"></i> Explore
+            <i className="fa-solid fa-music"></i> New
           </NavLink>
           <NavLink
-            to={"/gaming"}
+            to={"/top-charts"}
             className={`sidebar-link-sm ${({ isActive }) =>
               isActive ? "active" : ""}`}
           >
-            <i className="fa-solid fa-gamepad"></i> Gaming
-          </NavLink>
-          <NavLink
-            to={"/beauty"}
-            className={`sidebar-link-sm ${({ isActive }) =>
-              isActive ? "active" : ""}`}
-          >
-            <i className="fa-solid fa-vest"></i> Fashion & Beauty
-          </NavLink>
-          <NavLink
-            to={"/learning"}
-            className={`sidebar-link-sm ${({ isActive }) =>
-              isActive ? "active" : ""}`}
-          >
-            <i className="fa-solid fa-graduation-cap"></i> Learning
-          </NavLink>
-          <NavLink
-            to={"/sports"}
-            className={`sidebar-link-sm ${({ isActive }) =>
-              isActive ? "active" : ""}`}
-          >
-            <i className="fa-solid fa-medal"></i> Sports
+            <i className="fa-solid fa-arrow-trend-up"></i> Charts
           </NavLink>
         </div>
       )}

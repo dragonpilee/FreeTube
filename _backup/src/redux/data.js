@@ -1,12 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_KEY } from "../key/key";
+
 
 export const youtubeApi = createApi({
   reducerPath: "youtubeApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://youtube-v31.p.rapidapi.com", //added base url
+    baseUrl: "/api",
     prepareHeaders: (headers) => {
-      headers.set("X-RapidAPI-Key", API_KEY);
+      // The API key is now handled by the backend proxy.
+      // We can add other headers here if needed (e.g. Content-Type)
       return headers;
     },
   }),
@@ -14,7 +15,7 @@ export const youtubeApi = createApi({
     // for feed
     getFeed: builder.query({
       query: () => ({
-        url: "/search?relatedToVideoId=O62kAvoO9lM&part=id%2Csnippet&type=video&maxResults=50",
+        url: "/search?q=music&part=snippet%2Cid&maxResults=50",
       }),
     }),
 
@@ -53,7 +54,7 @@ export const youtubeApi = createApi({
       }),
     }),
 
-      getRelatedVideos: builder.query({
+    getRelatedVideos: builder.query({
       query: (id) => ({
         url: `/search?relatedToVideoId=${id}&part=id%2Csnippet&type=video&maxResults=50`,
       }),

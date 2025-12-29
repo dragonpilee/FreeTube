@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Library - MusicTube">
+    <div class="flex flex-col items-center justify-center h-[60vh] text-center">
+        <div class="w-24 h-24 rounded-full bg-zinc-800 flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-2">Your Library is Empty</h2>
+        <p class="text-gray-400 max-w-sm">
+            Save your favorite songs and playlists here. <br/>
+            (This feature requires local storage implementation).
+        </p>
+    </div>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PlayCard from '../../components/PlayCard';
+
+const { q } = Astro.params;
+
+// Fetch data from RapidAPI (Server Side)
+// In a real deployed Astro app, we would use an API Route or Netlify Function
+// For now, we will fetch directly here since 'output: server' allows it.
+// We need to fetch from the specific endpoint. Using a public one or our key.
+// Since we are inside the Docker container, we can use the env var if passed.
+
+// NOTE: For this demo, since we don't have the Proxy Server running inside the Astro Dev server yet,
+// We will use a fallback mock search if the API key isn't present, or try to Hit the API securely.
+// Actually, the best way for "Dynamic" right now without a backend is to fetch client-side OR 
+// use a public instance. 
+// Let's implement Client-Side fetching for maximum reliability in this architecture.
+
+---
+
+<Layout title={`Search: ${q}`}>
+    <div class="max-w-7xl mx-auto" id="search-container" data-query={q}>
+        <h2 class="text-2xl font-bold mb-6">Results for "{q}"</h2>
+        
+        <div id="results-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <!-- Skeletons -->
+            {[1,2,3,4,5,6,7,8,9,10].map(() => (
+                <div class="animate-pulse">
+                    <div class="aspect-square bg-white/5 rounded-md mb-3"></div>
+                    <div class="h-4 bg-white/5 rounded w-3/4 mb-2"></div>
+                    <div class="h-3 bg-white/5 rounded w-1/2"></div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import { playSong } from '../../store/playerStore';
+
+    // Client-side fetcher to avoid exposing keys on server if not configured,
+    // and to enable dynamic loading
+    const container = document.getElementById('search-container');
+    const q = container.dataset.query;
+    const grid = document.getElementById('results-grid');
+
+    async function search() {
+        const instances = [
+            'https://vid.puffyan.us',
+            'https://inv.tux.pizza',
+            'https://yewtu.be',
+            'https://invidious.drgns.space'
+        ];
+
+        let data = null;
+        let successInfo = "";
+
+        for (const instance of instances) {
+             try {
+                 console.log(`Trying ${instance}...`);
+                 const response = await fetch(`${instance}/api/v1/search?q=${encodeURIComponent(q)}&type=video`);
+                 if (response.ok) {
+                     data = await response.json();
+                     successInfo = `Loaded from ${new URL(instance).hostname}`;
+                     break; // Success!
+                 }
+             } catch (e) {
+                 console.warn(`Failed to fetch from ${instance}`, e);
+             }
+        }
+
+        if (!data) {
+             grid.innerHTML = '<div class="col-span-full text-center py-10"><p class="text-red-500 mb-2">All servers are busy.</p><button onclick="window.location.reload()" class="px-4 py-2 bg-white/10 rounded hover:bg-white/20">Try Again</button></div>';
+             return;
+        }
+
+        grid.innerHTML = '';
+        
+        // Show source (optional, for debug)
+        // console.log(successInfo);
+        
+        data.forEach(item => {
+            if(item.type !== 'video') return;
+            
+            // Normalizing data for the Player Store
+            const songData = {
+                id: item.videoId,
+                title: item.title,
+                artist: item.author,
+                image: item.videoThumbnails?.[1]?.url || item.videoThumbnails?.[0]?.url 
+            };
+
+            const card = document.createElement('div');
+            card.className = 'group cursor-pointer';
+            card.innerHTML = `
+                <div class="aspect-square bg-zinc-800 rounded-md mb-3 overflow-hidden relative">
+                        <img src="${songData.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onError="this.src='https://via.placeholder.com/300?text=No+Image'"/>
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center pl-1 text-black shadow-xl hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                </div>
+                <h3 class="font-bold text-base truncate text-white">${songData.title}</h3>
+                <p class="text-gray-400 text-sm truncate">${songData.artist}</p>
+            `;
+            
+            card.onclick = () => {
+                    window.dispatchEvent(new CustomEvent('play-song', {
+                    detail: songData
+                    }));
+            };
+            
+            grid.appendChild(card);
+        });
+    }
+    
+    search();
+</script>

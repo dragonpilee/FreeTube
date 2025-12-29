@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PlayCard from '../components/PlayCard';
+
+// Mock Data for "Indian" content
+const hits = [
+    { id: 'h7gyJk139ZE', title: 'Apna Bana Le', artist: 'Arijit Singh', image: 'https://i.ytimg.com/vi/h7gyJk139ZE/mqdefault.jpg' },
+    { id: 'YxWlaYCA8MU', title: 'Jhoome Jo Pathaan', artist: 'Vishal-Shekhar', image: 'https://i.ytimg.com/vi/YxWlaYCA8MU/mqdefault.jpg' },
+    { id: '8FAUEv_E_xQ', title: 'Nashe Si Chadh Gayi', artist: 'Arijit Singh', image: 'https://i.ytimg.com/vi/8FAUEv_E_xQ/mqdefault.jpg' },
+    { id: 'T94PHkuydcw', title: 'Kun Faya Kun', artist: 'A.R. Rahman', image: 'https://i.ytimg.com/vi/T94PHkuydcw/mqdefault.jpg' },
+    { id: 'axTwopIS4hA', title: 'Kesariya', artist: 'Pritam', image: 'https://i.ytimg.com/vi/axTwopIS4hA/mqdefault.jpg' }
+];
+
+const punjabi = [
+    { id: 'cl0a3i2wFcc', title: 'Brown Munde', artist: 'AP Dhillon', image: 'https://i.ytimg.com/vi/cl0a3i2wFcc/mqdefault.jpg' },
+    { id: 'VideoId2', title: 'Excuses', artist: 'AP Dhillon', image: 'https://i.ytimg.com/vi/vX2cDW8LUWk/mqdefault.jpg' },
+    { id: 'VideoId3', title: 'Summer High', artist: 'AP Dhillon', image: 'https://i.ytimg.com/vi/u18bXfkf-tA/mqdefault.jpg' },
+    { id: 'VideoId4', title: 'Coka', artist: 'Sukh-E', image: 'https://i.ytimg.com/vi/M7QO8w2y_Qo/mqdefault.jpg' },
+    { id: 'VideoId5', title: '3 Peg', artist: 'Sharry Mann', image: 'https://i.ytimg.com/vi/87_uk22jX5Q/mqdefault.jpg' }
+];
+---
+
+<Layout title="MusicTube IN">
+	<div class="max-w-7xl mx-auto">
+        <!-- Categories -->
+        <div class="flex gap-3 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+            {['Romance', 'Party', 'Bollywood', 'Punjabi', 'Devotional', 'Indie India'].map((cat) => (
+                <button class="px-4 py-1.5 bg-white/10 border border-white/10 rounded-lg text-sm font-medium hover:bg-white/20 hover:border-white/20 transition-all whitespace-nowrap">
+                    {cat}
+                </button>
+            ))}
+        </div>
+
+        <!-- Section 1 -->
+        <h2 class="text-2xl font-bold mb-4">India's Top Hits</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-12">
+            {hits.map((song) => (
+                <PlayCard client:visible {...song} />
+            ))}
+        </div>
+
+        <!-- Section 2 -->
+        <h2 class="text-2xl font-bold mb-4">Punjabi Powerhouse</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {punjabi.map((song) => (
+                <PlayCard client:visible {...song} />
+            ))}
+        </div>
+    </div>
+</Layout>

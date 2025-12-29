@@ -1,0 +1,16 @@
+{
+    "name": "MusicTube",
+    "short_name": "MusicTube",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "description": "Ad-free Music Streaming",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}

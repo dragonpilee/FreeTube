@@ -18,17 +18,11 @@ const Explore = () => {
   return (
     <div className="explore-feed">
       <div className="explore-wrapper">
-        <Link to={"/gaming"} className="explore-items">
-          <i className="fa-solid fa-gamepad"></i> Gaming
+        <Link to={"/top-charts"} className="explore-items">
+          <i className="fa-solid fa-arrow-trend-up"></i> Top Charts
         </Link>
-        <Link to={"/beauty"} className="explore-items">
-          <i className="fa-solid fa-vest"></i> Fashion & Beauty
-        </Link>
-        <Link to={"/learning"} className="explore-items">
-          <i className="fa-solid fa-graduation-cap"></i> Learning
-        </Link>
-        <Link to={"/sports"} className="explore-items">
-          <i className="fa-solid fa-medal"></i> Sports
+        <Link to={"/explore"} className="explore-items">
+          <i className="fa-solid fa-music"></i> New Releases
         </Link>
       </div>
       <div className="trending">
@@ -38,8 +32,8 @@ const Explore = () => {
         {TrendingData && <h1>Trending Videos</h1>}
         {TrendingData && (
           <div className="ver-card-wrapper">
-            {FliteringVideoOnly.map((data) => (
-              <VerticalVideo key={data?.id?.videoId} d={data} />
+            {FliteringVideoOnly?.map((data, index) => (
+              <VerticalVideo key={data?.id?.videoId || index} d={data} />
             ))}
           </div>
         )}

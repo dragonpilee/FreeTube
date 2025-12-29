@@ -22,8 +22,8 @@ const Feed = () => {
       {isError && <Error />}
       {feedData && (
         <div className="video-card-wrapper">
-          {FliteringVideoOnly.map((data) => (
-            <Video key={data?.id?.videoId} d={data} />
+          {FliteringVideoOnly?.map((data, index) => (
+            <Video key={data?.id?.videoId || index} d={data} />
           ))}
         </div>
       )}
