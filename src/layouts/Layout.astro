@@ -67,6 +67,14 @@ import { Search } from 'lucide-react';
             <Player client:load />
             <BottomNav client:load />
         </div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js')
+                        .catch(err => console.error('SW registration failed:', err));
+                });
+            }
+        </script>
 	</body>
 </html>
 
