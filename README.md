@@ -1,6 +1,6 @@
 # FreeTubeMusic 🎵
 
-> A premium, ad-free YouTube Music clone built for performance and privacy.
+> A premium, ad-free Music built for performance and privacy.
 
 ![MusicTube Banner](public/favicon.svg)
 
@@ -64,3 +64,4 @@ This project is configured for **Netlify**.
 ## ❤️ Credits
 
 Developed with love by **CineGeek**.
+
